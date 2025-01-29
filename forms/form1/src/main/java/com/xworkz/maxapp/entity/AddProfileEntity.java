@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "userDetails")
+@NamedNativeQuery(name="getAllProfiles",query = "Select * from userdetails ",resultClass = AddProfileEntity.class)
 public class AddProfileEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

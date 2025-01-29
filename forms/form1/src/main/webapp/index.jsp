@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+    .body{
+        background-color :#007bff;
+       }
         .form-container{
             display: grid;
             grid-template-columns: 100px 1fr;
@@ -40,7 +43,7 @@
                 <input type="text" name="email">
             </div>
             <div>
-                <label >Moblie</label>
+                <label >Mobile</label>
                 <input type="text" name="mobile">
             </div>
             <div>
@@ -52,6 +55,9 @@
                 <input type="submit" value="Add Profile">
             </div>
         </form>
+    </div>
+    <div>
+        <a href="getAllProfiles">Get All Profiles </a>
     </div>
 </body>
 </html>

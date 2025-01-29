@@ -11,6 +11,8 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class AddProfileServiceImpl implements AddProfileService {
@@ -33,5 +35,43 @@ public class AddProfileServiceImpl implements AddProfileService {
             }
         }
         return null;
+    }
+
+    @Override
+    public List<AddProfileDto> getAllProfiles() {
+        List<AddProfileEntity> entity = repository.getAllProfiles();
+        List<AddProfileDto> dtoList=new ArrayList<>();
+
+        for (AddProfileEntity entity1 : entity) {
+            try {
+                AddProfileDto dto = new AddProfileDto();
+                BeanUtils.copyProperties(dto, entity1);
+                dtoList.add(dto);
+            } catch (IllegalAccessException | InvocationTargetException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return dtoList;
+
+
+//        List<AddProfileDto> dtoList= new ArrayList<>();
+//        try {
+//            BeanUtils.copyProperties(dtoList, entity);
+//            return dtoList;
+//        } catch (IllegalAccessException | InvocationTargetException e) {
+//            System.out.println(e.getMessage());
+//        }
+//        return null;
+//        AddProfileDto dto=new AddProfileDto();
+//        for(AddProfileEntity entity1:entity){
+//            dto.setFullName(entity1.getFullName());
+//            dto.setEmail(entity1.getEmail());
+//            dto.setAddress(entity1.getAddress());
+//            dto.setMobile(entity1.getMobile());
+//            dtoList.add(dto);
+//        }
+//        return dtoList;
+//        return entity;
+
     }
 }
