@@ -13,26 +13,49 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(urlPatterns="/addProfile")
+@WebServlet(urlPatterns="/addProfile", loadOnStartup=+2)
 public class AddProfileServlet extends HttpServlet {
+    public AddProfileServlet() {
+        System.out.println("Instantiation phase");
+    }
+
+    @Override
+    public void init() throws ServletException {
+        System.out.println("Initialization phase");
+    }
+
+//    @Override
+//    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        System.out.println("service Phase");
+//    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-         String fullName=req.getParameter("fullName");
+        System.out.println("doPost() invocation");
+         String userName=req.getParameter("userName");
          String email=req.getParameter("email");
          String mobile=req.getParameter("mobile");
          String address=req.getParameter("address");
         AddProfileDto dto=new AddProfileDto();
-        dto.setFullName(fullName);
-        dto.setEmail(fullName);
+        dto.setFullName(userName);
+        dto.setEmail(email);
         dto.setMobile(Long.parseLong(mobile));
         dto.setAddress(address);
         AddProfileService service=new AddProfileServiceImpl();
         service.validateAndSave(dto);
 
-        req.setAttribute("firstName",fullName);
+        //         PrintWriter printWriter=resp.getWriter();
+//         printWriter.write("Thank you "+fullName+" for registering!!!");
+
+        req.setAttribute("userName",userName);
         RequestDispatcher requestDispatcher= req.getRequestDispatcher("response.jsp");
         requestDispatcher.forward(req,resp);
-//         PrintWriter printWriter=resp.getWriter();
-//         printWriter.write("Thank you "+fullName+" for registering!!!");
+
+        System.out.println("doPost() ended");
+    }
+
+    @Override
+    public void destroy() {
+        System.out.println("Closing all the costly resources");
     }
 }

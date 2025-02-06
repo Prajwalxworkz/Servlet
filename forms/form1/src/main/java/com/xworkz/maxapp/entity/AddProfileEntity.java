@@ -8,11 +8,13 @@ import javax.persistence.*;
 @Entity
 @Table(name = "userDetails")
 @NamedNativeQuery(name="getAllProfiles",query = "Select * from userdetails ",resultClass = AddProfileEntity.class)
+@NamedQuery(name="deleteProfileById",query = "delete from AddProfileEntity form1 where form1.id=:id")
+@NamedQuery(name="getProfileById",query = "select form1 from AddProfileEntity form1 where form1.id=:id")
 public class AddProfileEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    Integer id;
+    private Integer id;
     @Column(name = "full_name")
     private String fullName;
     @Column(name = "email")

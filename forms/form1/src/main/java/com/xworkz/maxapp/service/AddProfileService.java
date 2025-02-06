@@ -9,4 +9,10 @@ public interface AddProfileService {
     Boolean validateAndSave(AddProfileDto dto);
 
     List<AddProfileDto> getAllProfiles();
+
+    void deleteProfileById(Integer id);
+
+    AddProfileDto getProfileById(Integer id);
+
+    void updateProfileById(AddProfileDto dto);
 }

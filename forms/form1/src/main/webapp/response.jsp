@@ -8,7 +8,7 @@
     </head>
     <body style="background-color: aquamarine;">
     <div >
-    <h3>Thank you ${ firstName } for registering!!!</h3>
+    <h3>Thank you ${userName} for registering!!!</h3>
 </div>
     </body>
     </html>

@@ -6,9 +6,9 @@
     <head>
 
     </head>
-    <body style="background-color: bisque;">
-    <div >
-    <h3>Thank you ${ firstName } for registering!!!</h3>
-</div>
+    <body>
+       <div class="alert alert-success alert-dismissible " role="alert">
+           <h5>${deleteMessage}</h5>
+       </div>
     </body>
     </html>

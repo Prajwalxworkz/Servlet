@@ -9,4 +9,10 @@ public interface AddProfileRepository {
     Boolean save(AddProfileEntity entity);
 
     List<AddProfileEntity> getAllProfiles();
+
+    void deleteProfileById(Integer id);
+
+    AddProfileEntity getProfileById(Integer id);
+
+    void updateProfileById(AddProfileEntity entity);
 }

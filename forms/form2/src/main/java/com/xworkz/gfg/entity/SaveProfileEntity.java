@@ -7,6 +7,9 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "form2")
+@NamedQuery(name="getAllProfiles",query="select form2 from SaveProfileEntity form2")
+@NamedQuery(name="getProfileById",query="select form2 from SaveProfileEntity form2 where form2.id=:id")
+@NamedQuery(name="deleteProfileById",query="delete from SaveProfileEntity form2 where form2.id=:id")
 public class SaveProfileEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
